@@ -9,7 +9,7 @@ This repository aims at giving you the ability to use models from [DL_for_HTT_ma
 
 When using this package, please acknowledge it with [the provided citations](https://github.com/lucastorterotot/DiTau_ML_mass/blob/main/DiTau_ML_mass.bib). Thanks!
 
-# Output variable and citation
+# Output variable
 
 The output from the models is a mass prediction, in GeV, for the particle decaying into two tau leptons.
 We call this outpout `ml_mass` and you can write it with LaTeX using
