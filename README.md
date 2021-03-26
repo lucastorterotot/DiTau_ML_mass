@@ -45,7 +45,21 @@ with:
 - the softplus ($x \to \ln(1+e^x)$) activation function for the hidden neurons;
 - the linear activation function for the single-neuron output layer;
 - optimized by Adam;
-- with the Mean Absolute Percentile Error (MAPE) loss;
+- with our custom loss defined as
+```
+def custom_loss(y_pred, y_true):
+
+    factor = 1.0
+    
+    if y_pred - y_true >= 1000 - y_pred:
+        factor = 0.0 # remove event from the loss
+    elif y_true - y_pred >= y_pred - 50:
+        factor = 0.1 # do not remove completely to keep training convergence
+
+    loss = abs((y_true - y_pred)/(y_true**.5) * factor)
+
+    return mean(loss)
+```
 - neurons weights initialized by the Glorot Uniform method;
 - the input layer taking all the 27 variables listed in the next section.
 
@@ -88,15 +102,24 @@ The following variables can be used by the provided models. Before using a model
 The model should be able to predict masses even if your analysis uses other selection cuts.
 
 - `tau1` and `tau2` are the visible decay products of the tau leptons. In asymmetric channels (MuTau, EleTau, EleMu), `tau1` is the first part of the channel name (i.e. the muon, the electron, the electron respectively). For symmetric channels (TauTau, MuMu, EleEle), `tau1` is the physic object of higher pT.
-- jets selections is based on the following: ...
-- The Additionnal Hadronic Activity (AHA) is defined as ...
+- Jets selection is: pT > 30 GeV and |eta| < 4.7;
+- b-jets selection is: b-tagged jet and pT > 20 GeV and |eta| < 2.5
+- The Additionnal Hadronic Activity (AHA) is defined as the vectorial moment sum of the remaining jets:
+```
+pxAHA, pyAHA, pzAHA = 0, 0, 0
+NjetsAHA = 0
+for jet in jets_sorted_by_decreasing_pT[1:]: # ignore the two leading jets
+    pxAHA, pyAHA, pzAHA += jet_px, jet_py, jet_pz
+    NjetsAHA += 1
+```
+and pT, eta and phi for AHA or obtained from px, py and pz.
 - Transverse masses `mT(tau1, MET)`, `mT(tau2, MET)` and `mT(tau1, tau2)` are defined as
 ```
-`mT(A, B)`
+mT(A, B)**2 = 2 * pT(A) * pT(B) * cos(phi(A) - phi(B))
 ```
 - The total transverse mass `mTtot` is defined as
 ```
-mTtot^2 = mT(tau1, MET)^2 + mT(tau2, MET)^2 + mT(tau1, tau2)^2
+mTtot**2 = mT(tau1, MET)**2 + mT(tau2, MET)**2 + mT(tau1, tau2)**2
 ```
 
 
