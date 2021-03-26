@@ -85,15 +85,15 @@ The following variables can be used by the provided models. Before using a model
 - `remaining_jets_eta_reco`: pseudo-rapidity of the AHA;
 - `remaining_jets_phi_reco`: azimuthal angle of the AHA;
 - `remaining_jets_N_reco`: number of jets in the AHA;
-- `PuppiMET_pt_reco`: transverse missing momentum (MET);
+- `PuppiMET_pt_reco`: transverse missing momentum obtained from PUPPI (PuppiMET);
 - `PuppiMET_phi_reco`: azimuthal angle of the missing transverse momentum;
 - `MET_covXX_reco`: first diagonal element of the MET covariance matrix;
 - `MET_covXY_reco`: non-diagonal element of the MET covariance matrix;
 - `MET_covYY_reco`: second diagonal element of the MET covariance matrix;
-- `PuppimT1_reco`: `tau1` transverse mass `mT(tau1, MET)`;
-- `PuppimT2_reco`: `tau2` transverse mass `mT(tau2, MET)`;
+- `PuppimT1_reco`: `tau1` transverse mass `mT(tau1, PuppiMET)`;
+- `PuppimT2_reco`: `tau2` transverse mass `mT(tau2, PuppiMET)`;
 - `PuppimTtt_reco`: `tau1` vs `tau2` transverse mass `mT(tau1, tau2)` (not to be misunderstood as `mT(tau1+tau2, MET)`!);
-- `PuppimTtot_reco`: total transverse mass;
+- `PuppimTtot_reco`: total transverse mass (with PuppiMET);
 - `PU_npvsGood_reco`: number of Pile-Up vertices, stored as `npvsGood` in NanoAODs;
 - `N_neutrinos_reco`: expected amont of neutrinos from the tau leptons decays given the identified channel (2 in TauTau, 3 in MuTau or EleTau, 4 in MuMuor EleMu or EleEle).
 
@@ -113,13 +113,13 @@ for jet in jets_sorted_by_decreasing_pT[1:]: # ignore the two leading jets
     NjetsAHA += 1
 ```
 and then pT, eta and phi for AHA are obtained from its px, py and pz.
-- Transverse masses `mT(tau1, MET)`, `mT(tau2, MET)` and `mT(tau1, tau2)` are defined as
+- Transverse masses `mT(tau1, PuppiMET)`, `mT(tau2, PuppiMET)` and `mT(tau1, tau2)` are defined as
 ```
 mT(A, B)**2 = 2 * pT(A) * pT(B) * cos(phi(A) - phi(B))
 ```
 - The total transverse mass `mTtot` is defined as
 ```
-mTtot**2 = mT(tau1, MET)**2 + mT(tau2, MET)**2 + mT(tau1, tau2)**2
+PuppimTtot**2 = mT(tau1, PuppiMET)**2 + mT(tau2, PuppiMET)**2 + mT(tau1, tau2)**2
 ```
 
 
