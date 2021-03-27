@@ -115,7 +115,7 @@ for jet in jets_sorted_by_decreasing_pT[1:]: # ignore the two leading jets
 and then pT, eta and phi for AHA are obtained from its px, py and pz.
 - Transverse masses `mT(tau1, PuppiMET)`, `mT(tau2, PuppiMET)` and `mT(tau1, tau2)` are defined as
 ```
-mT(A, B)**2 = 2 * pT(A) * pT(B) * cos(phi(A) - phi(B))
+mT(A, B)**2 = 2 * pT(A) * pT(B) * ( 1 - cos(phi(A) - phi(B)) )
 ```
 - The total transverse mass `mTtot` is defined as
 ```
