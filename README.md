@@ -101,6 +101,7 @@ The following variables can be used by the provided models. Before using a model
 
 The model should be able to predict masses even if your analysis uses other selection cuts.
 
+- `phi` values range from `-pi` to `+pi`;
 - `tau1` and `tau2` are the visible decay products of the tau leptons. In asymmetric channels (MuTau, EleTau, EleMu), `tau1` is the first part of the channel name (i.e. the muon, the electron, the electron respectively). For symmetric channels (TauTau, MuMu, EleEle), `tau1` is the physics object of higher pT.
 - Jets selection is: pT > 30 GeV and |eta| < 4.7;
 - b-jets selection is: b-tagged jet and pT > 20 GeV and |eta| < 2.5;
