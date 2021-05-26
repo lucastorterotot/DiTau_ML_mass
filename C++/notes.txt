@@ -1,0 +1,2 @@
+This interface is intended for CMSSW based framework, Tensorflow C++ API must installed otherwise: https://www.tensorflow.org/install/lang_c
+testMLMass.cpp contains a set of inputs and the expected output.
