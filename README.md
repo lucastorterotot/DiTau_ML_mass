@@ -63,6 +63,15 @@ def custom_loss(y_pred, y_true):
 - neurons weights initialized by the Glorot Uniform method;
 - the input layer taking all the 27 variables listed in the next section.
 
+## DNN2
+
+The `DNN2` model is similar to `DNN1`, except:
+
+- ReLU activation function for neurons in hidden layers (instead of softplus);
+- neurons weights initialized by the Glorot Normal method (instead of Glorot Uniform).
+
+This `DNN2` model exhibits slightly better performances than `DNN1` on the di-tau mass predictions.
+
 # Input variables definitions
 
 ## Inputs list
