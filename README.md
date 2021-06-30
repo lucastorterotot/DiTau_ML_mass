@@ -77,24 +77,25 @@ This `DNN2` model exhibits slightly better performances than `DNN1` on the di-ta
 ## Inputs list
 
 The following variables can be used by the provided models. Before using a model, please check that you have them in your ntuple!
+More details are given below.
 
-- `tau1_pt_reco`: transverse momentum of the first tau visible decay products. The first tau is defined below;
+- `tau1_pt_reco`: transverse momentum in GeV of the first tau visible decay products. The first tau is defined below;
 - `tau1_eta_reco`: pseudo-rapidity of the first tau visible decay products;
 - `tau1_phi_reco`: azimuthal angle of the first tau visible decay products;
-- `tau2_pt_reco`: transverse momentum of the second tau visible decay products. The second tau is defined below;
+- `tau2_pt_reco`: transverse momentum in GeV of the second tau visible decay products. The second tau is defined below;
 - `tau2_eta_reco`: pseudo-rapidity of the second tau visible decay products;
 - `tau2_phi_reco`: azimuthal angle of the second tau visible decay products;
-- `jet1_pt_reco`: transverse momentum of the leading jet (higher pT), jet selection is defined below;
+- `jet1_pt_reco`: transverse momentum in GeV of the leading jet (higher pT), jet selection is defined below;
 - `jet1_eta_reco`: pseudo-rapidity of the leading jet;
 - `jet1_phi_reco`: azimuthal angle of the leading jet;
-- `jet2_pt_reco`: transverse momentum of the sub-leading jet (second higher pT);
+- `jet2_pt_reco`: transverse momentum in GeV of the sub-leading jet (second higher pT);
 - `jet2_eta_reco`: pseudo-rapidity of the sub-leading jet;
 - `jet2_phi_reco`: azimuthal angle of the sub-leading jet;
-- `remaining_jets_pt_reco`: transverse momentum of the Additionnal Hadronic Activity (AHA), defined below;
+- `remaining_jets_pt_reco`: transverse momentum in GeV of the Additionnal Hadronic Activity (AHA), defined below;
 - `remaining_jets_eta_reco`: pseudo-rapidity of the AHA;
 - `remaining_jets_phi_reco`: azimuthal angle of the AHA;
 - `remaining_jets_N_reco`: number of jets in the AHA;
-- `PuppiMET_pt_reco`: transverse missing momentum obtained from PUPPI (PuppiMET);
+- `PuppiMET_pt_reco`: transverse missing momentum in GeV obtained from PUPPI (PuppiMET);
 - `PuppiMET_phi_reco`: azimuthal angle of the missing transverse momentum;
 - `MET_covXX_reco`: first diagonal element of the MET covariance matrix;
 - `MET_covXY_reco`: non-diagonal element of the MET covariance matrix;
@@ -137,8 +138,16 @@ PuppimTtot**2 = mT(tau1, PuppiMET)**2 + mT(tau2, PuppiMET)**2 + mT(tau1, tau2)**
 
 ## Installation
 
-## How to use the provided code
+First, clone this repository in order to get the models files. Then, depending on your own framework, you may copy then in a working directory.
+To make sure you have access to the models files for batch jobs, you may add them in the list of files to put in a tarball, for instance.
+As this really depends on how your framework is designed, please check it with other people using it as they should know how to extend the framework.
+For local test, pease have a look to next section.
 
 ## Implementing it in your own analysis
 
+Please have a look at the [python](https://github.com/lucastorterotot/DiTau_ML_mass/tree/main/python) or [C++](https://github.com/lucastorterotot/DiTau_ML_mass/tree/main/C++) codes provided to load a model and get predictions from it.
+For python, a full implementation example is available [here](https://github.com/lucastorterotot/friend-tree-producer/blob/master/scripts/add_DNN_model_prediction_in_root_file.py).
+
 # Questions or issues
+
+Please create GitHub issues or contact me for any question.
