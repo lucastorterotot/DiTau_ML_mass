@@ -77,6 +77,7 @@ This `DNN2` model exhibits slightly better performances than `DNN1` on the di-ta
 ## Inputs list
 
 The following variables can be used by the provided models. Before using a model, please check that you have them in your ntuple!
+Undefined entries (ex: no jets in the event) are set to 0. Please check that your own default values are converted before giving it as entries for the DNN!
 More details are given below.
 
 - `tau1_pt_reco`: transverse momentum in GeV of the first tau visible decay products. The first tau is defined below;
