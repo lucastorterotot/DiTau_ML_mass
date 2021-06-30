@@ -6,6 +6,15 @@ import numpy as np
 from keras.models import model_from_json
 import array
 
+N_neutrinos_in_channel = {
+    "tt" : 2,
+    "mt" : 3,
+    "et" : 3,
+    "mm" : 4,
+    "em" : 4,
+    "ee" : 4,
+}
+
 class DNN_model_from_json(object):
     
     def __init__(self, json_file):
